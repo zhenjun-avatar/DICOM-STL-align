@@ -1,0 +1,7 @@
+tab-separated: relative_path<TAB>source_url_or_note
+
+sample_data\dicom\CT1_J2KR.dcm	https://raw.githubusercontent.com/robyoung/dicom-test-files/master/data/WG04/J2KR/CT1_J2KR
+sample_data\dicom\CT2_J2KR.dcm	https://raw.githubusercontent.com/robyoung/dicom-test-files/master/data/WG04/J2KR/CT2_J2KR
+sample_data\dicom\MR1_J2KR.dcm	https://raw.githubusercontent.com/robyoung/dicom-test-files/master/data/WG04/J2KR/MR1_J2KR
+sample_data\mesh\stanford-bunny.obj	https://raw.githubusercontent.com/alecjacobson/common-3d-test-models/master/data/stanford-bunny.obj
+sample_data\mesh\stanford-bunny.stl	(local conversion from OBJ)
