@@ -1,43 +1,42 @@
-# DICOM–STL 对齐原型
+# DICOM–STL alignment
 
-轻量 PoC：读 DICOM、读 STL、Open3D 可视化、键盘手动刚体初对齐、ICP、配准前后叠加对比。**非临床、非生产**，仅供算法与工程验证。
+PoC: load DICOM, load STL, Open3D visualization, keyboard rigid pre-alignment, ICP, before/after overlay. **Not for clinical or production use**—algorithm and workflow validation only.
 
-## 环境
+## Environment
 
-- Python 3.10+（推荐 3.12）
-- 依赖：`pip install -r requirements.txt`
+- Python 3.10+ (3.12 recommended)
+- Install: `pip install -r requirements.txt`
 
-## 快速运行
+## Quick start
 
 ```bash
-# 默认：单层 WG04 CT + Stanford Bunny（演示用，解剖不对应）
+# Default: single-slice WG04 CT + Stanford Bunny (demo only, no anatomical pairing)
 python main.py
 
-# 同源配对：多层 GE CT + 由同一体生成的表面 STL（仓库已带 sample_data/paired_ge_ct）
+# Paired: multi-slice GE CT + STL surface from the same volume (bundled under sample_data/paired_ge_ct)
 python main.py --preset paired-ge
 
-# 无界面自检
+# Headless smoke run
 python main.py --preset paired-ge --skip-manual --skip-preview
 ```
 
-常用参数：`--dicom`（文件或目录）、`--stl`、`--skip-manual`、`--skip-preview`、`--no-auto-scale`、`--mesh-points`、`--max-volume-points`。
+Useful flags: `--dicom` (file or folder), `--stl`, `--skip-manual`, `--skip-preview`, `--no-auto-scale`, `--mesh-points`, `--max-volume-points`.
 
-## 数据脚本
+## Data scripts
 
-| 脚本 | 作用 |
-|------|------|
-| `scripts/download_sample_data.py` | 拉取 WG04 单层 DICOM + Bunny OBJ→STL |
-| `scripts/download_paired_ge_ct.py` | 从 GitHub 拉取 `dcm_qa_ct` GE 28 层 DICOM，并本地生成同源 `surface_from_volume.stl` |
+| Script | Purpose |
+|--------|---------|
+| `scripts/download_paired_ge_ct.py` | Download `dcm_qa_ct` GE series (28 slices), build co-registered `surface_from_volume.stl` locally |
 
-配对说明见 `sample_data/paired_ge_ct/README.txt`。
+See `sample_data/paired_ge_ct/README.txt` for pairing notes.
 
-## 测试
+## Tests
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-## 许可与数据
+## License & data
 
-- 代码按项目需要自行标注许可。
-- `dcm_qa_ct` 数据见原仓库许可；WG04 测试体、Stanford Bunny 等见各自来源。
+- MIT LICENSE
+- `dcm_qa_ct` and other sample assets follow their upstream licenses.
